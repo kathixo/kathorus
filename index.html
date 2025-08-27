@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kathorus Premium Auto Care</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header id="siteHeader" class="site-header">
+    <div class="header-left">
+      <img src="images/workshop.jpg" alt="Kathorus logo" class="logo">
+      <div class="brand">
+        <div class="brand-name">KATHORUS</div>
+        <div class="brand-sub">Premium Auto Care</div>
+      </div>
+    </div>
+
+    <nav class="nav" id="mainNav">
+      <a href="#services">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="#beforeafter">Before & After</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-cta">
+      <a href="#contact" class="btn primary">Get Quote</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero" style="background-image:url('images/hero.jpg')">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="eyebrow">Professional Panel Beating</div>
+      <h1>We Bring Your Vehicle Back To Showroom Condition</h1>
+      <p class="lead">Precision panel beating, flawless paint work and reliable insurance repairs — trusted by hundreds of clients.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#contact">Call For Quote</a>
+        <a class="btn outline" href="portfolio.html">View Our Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section narrow">
+    <h2 class="section-title">Our Services</h2>
+    <p class="lead">Complete automotive repair and refinishing services to get your vehicle back on the road</p>
+    <div class="cards services-grid">
+      <article class="card service-card" data-tilt>
+        <img src="images/panel.jpg" alt="Panel Beating">
+        <h3>Panel Beating</h3>
+        <p>Structural and cosmetic repair to restore your vehicle’s bodywork.</p>
+      </article>
+
+      <article class="card service-card" data-tilt>
+        <img src="images/bumper.jpg" alt="Bumper Repair">
+        <h3>Bumper Repair</h3>
+        <p>Repairs, reinforcement, replacement and repainting.</p>
+      </article>
+
+      <article class="card service-card" data-tilt>
+        <img src="images/refinisher.jpg" alt="Paint Matching">
+        <h3>Paint Matching</h3>
+        <p>Perfect colour matching and professional clear coat finish.</p>
+      </article>
+
+      <article class="card service-card" data-tilt>
+        <img src="images/repaints.jpg" alt="Insurance Work">
+        <h3>Towing</h3>
+        <p>Reliable towing services to get your vehicle safely to our workshop when you need it most.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- BEFORE & AFTER -->
+  <section id="beforeafter" class="section">
+    <h2 class="section-title">Before & After</h2>
+    <div class="slider-row">
+      <div class="ba-slider" tabindex="0">
+        <img src="images/after1.jpg" class="ba-before" alt="before 1">
+        <div class="ba-after-wrapper"><img src="images/before1.jpg" class="ba-after" alt="after 1"></div>
+        <div class="ba-handle" aria-hidden="true"></div>
+      </div>
+
+      <div class="ba-slider" tabindex="0">
+        <img src="images/after2.jpg" class="ba-before" alt="before 2">
+        <div class="ba-after-wrapper"><img src="images/before2.jpg" class="ba-after" alt="after 2"></div>
+        <div class="ba-handle" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="section narrow">
+    <h2 class="section-title">Customer Reviews</h2>
+    <div class="reviews-wrap">
+      <button class="rev-btn prev" aria-label="previous review">‹</button>
+      <div class="reviews-carousel">
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>"Kathorus completely transformed my car. Fast, friendly and perfect finish."</p>
+          <strong>- Sarah M.</strong>
+        </div>
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>"Excellent workmanship and great communication. Highly recommended."</p>
+          <strong>- David K.</strong>
+        </div>
+        <div class="review">
+          <div class="stars">★★★★☆</div>
+          <p>"Professional and reliable team — good value for money."</p>
+          <strong>- Amanda R.</strong>
+        </div>
+      </div>
+      <button class="rev-btn next" aria-label="next review">›</button>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO PREVIEW -->
+  <section class="section narrow">
+    <h2 class="section-title">Portfolio</h2>
+    <p class="muted">A sample from our completed jobs — click "View Portfolio" to see the full gallery.</p>
+    <div class="gallery-grid">
+      <a href="portfolio.html"><img src="images/IMG-20250825-WA0041.jpg" alt="work 1"></a>
+      <a href="portfolio.html"><img src="images/IMG-20250825-WA0054.jpg" alt="work 2"></a>
+      <a href="portfolio.html"><img src="images/IMG-20250825-WA0034.jpg" alt="work 3"></a>
+      <a href="portfolio.html"><img src="images/IMG-20250825-WA0033.jpg" alt="work 4"></a>
+    </div>
+    <div class="center"><a class="btn outline" href="portfolio.html">View Full Portfolio</a></div>
+  </section>
+
+  <!-- CONTACT (card layout like screenshot) -->
+ <!-- CONTACT -->
+<section id="contact" class="section contact-section">
+  <h2 class="section-title scroll-animate">Get In Touch</h2>
+
+  <div class="contact-row narrow">
+    <!-- Left Column: Contact Cards -->
+    <div class="contact-left scroll-animate">
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+        <h4>Phone</h4>
+        <p>Call us for a free quote</p>
+        <strong>(079) 857-8271</strong>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <h4>Email</h4>
+        <p>Send an inquiry anytime</p>
+        <strong>info@kathorus.com</strong>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <h4>Address</h4>
+        <p>Visit our workshop</p>
+        <strong>3084 Sefolo Road, Vosloorus</strong>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+        <h4>Hours</h4>
+        <p>We're open</p>
+        <strong>Mon–Fri 08:00–17:00</strong>
+      </div>
+    </div>
+
+    <!-- Right Column: Contact Form -->
+    <div class="contact-right scroll-animate">
+      <div class="cta-row">
+        <a class="btn primary" href="tel:+27798578271">Call Now for Free Quote</a>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form id="contactForm" class="contact-form" novalidate>
+          <input name="name" placeholder="Your name" required>
+          <input name="email" type="email" placeholder="Email address" required>
+          <textarea name="message" rows="5" placeholder="Tell us about your vehicle / issue" required></textarea>
+          <button class="btn primary" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+  <div class="footer-inner narrow">
+    <div class="footer-center">
+      <div class="brand-row">
+        <img src="images/workshop.jpg" alt="Kathorus logo" class="logo">
+        <div class="brand">
+          <div class="brand-name">KATHORUS</div>
+          <div class="brand-sub">Premium Auto Care</div>
+        </div>
+      </div>
+
+      <p>© 2025 Kathorus Premium Auto Care</p>
+
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  <!-- Floating CTA -->
+  <a class="floating-cta" href="#contact" aria-label="Get Quote">Get Quote</a>
+</body>
+</html>
