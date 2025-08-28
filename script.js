@@ -88,6 +88,8 @@ function showReview(index) {
   });
 }
 
+showReview(current);
+
 prevBtn.addEventListener('click', () => {
   current = (current === 0) ? reviews.length - 1 : current - 1;
   showReview(current);
