@@ -4,10 +4,238 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfolio — Kathorus</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      color: #333;
+    }
+    .site-header, .site-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      background: #000;
+      color: #fff;
+    }
+    .header-left, .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo {
+      height: 50px;
+      width: 50px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .brand-name { font-weight: bold; font-size: 1.2rem; }
+    .brand-sub { font-size: 0.8rem; color: #bbb; }
+    .nav a {
+      margin: 0 10px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav a.active { font-weight: bold; }
+    .btn {
+      padding: 8px 14px;
+      border: 1px solid #fff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .btn.primary { background: red; border: none; }
+    .section { padding: 40px 20px; text-align: center; }
+    .section-title { font-size: 1.8rem; margin-bottom: 10px; }
+    .muted { color: #666; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: linear-gradient(180deg, #000000 0%, #0b1a3d 100%);
+      overflow: hidden;
+      color: #fff;
+      text-align: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(0, 0, 0, 0.85) 0%, rgba(11, 26, 61, 0.15) 50%, rgba(0, 0, 0, 0.85) 100%);
+      z-index: 1;
+      animation: overlayShift 15s infinite linear;
+      background-size: 200% 200%;
+    }
+    @keyframes overlayShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(243, 3, 3, 0.772);
+      margin-bottom: 12px;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .gallery-item {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover { transform: scale(1.05); }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+    .lb-close, .lb-nav {
+      position: absolute;
+      background: rgba(0,0,0,0.6);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      padding: 10px 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .lb-close { top: 20px; right: 30px; }
+    .lb-prev { left: 30px; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 30px; top: 50%; transform: translateY(-50%); }
+
+    .site-footer {
+  position: relative;
+  background: linear-gradient(180deg, #000000 0%, #0b1a3d 100%);
+  color: #ffffff;
+  padding: 20px 20px; /* compact padding */
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer-inner {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.logo {
+  height: 105px; /* smaller logo */
+  width: auto;
+}
+
+.brand-name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.brand-sub {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.footer-links li a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #0b1a3d; /* navy accent on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .brand-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    height: 35px;
+  }
+  .brand-name {
+    font-size: 0.95rem;
+  }
+  .brand-sub {
+    font-size: 0.8rem;
+  }
+  .footer-links {
+    font-size: 0.85rem;
+  }
+}
+  </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header class="site-header">
     <div class="header-left">
       <img src="images/logo.jpg" alt="logo" class="logo">
@@ -26,7 +254,8 @@
     </div>
   </header>
 
-    <section class="hero" id="hero">
+  <!-- Hero -->
+  <section class="hero" id="hero">
     <div class="hero-overlay"></div>
     <div class="hero-inner">
       <div class="eyebrow">Our Work</div>
@@ -35,148 +264,74 @@
     </div>
   </section>
 
-  <style>
-  .hero {
-  position: relative;
-  min-height: 40vh; /* reduced from 78vh to 40vh */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 20px; /* reduced padding */
-  background: linear-gradient(180deg, #000000 0%, #0b1a3d 100%);
-  overflow: hidden;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    rgba(0, 0, 0, 0.85) 0%,
-    rgba(11, 26, 61, 0.15) 50%,
-    rgba(0, 0, 0, 0.85) 100%
-  );
-  z-index: 1;
-  animation: overlayShift 15s infinite linear;
-  background-size: 200% 200%;
-}
-
-@keyframes overlayShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  color: #ffffff;
-  text-align: center;
-  padding: 16px; /* reduced padding */
-  max-width: 980px;
-}
-
-.eyebrow {
-  display: inline-block;
-  padding: 4px 10px; /* smaller */
-  border-radius: 20px;
-  background: rgba(243, 3, 3, 0.772);
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-
-h1 {
-  font-size: 2rem; /* slightly smaller */
-  line-height: 1.1;
-  margin-bottom: 8px;
-}
-
-.lead {
-  font-size: 0.95rem; /* smaller text */
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 12px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.8rem;
-  }
-  .lead {
-    font-size: 0.9rem;
-  }
-  .hero-inner {
-    padding: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-  .lead {
-    font-size: 0.85rem;
-  }
-  .hero-actions {
-    flex-direction: column;
-    gap: 6px;
-  }
-}
-</style>
-
+  <!-- Portfolio -->
   <main>
     <section class="section narrow">
       <h2 class="section-title">Portfolio</h2>
       <p class="muted">Click an image to enlarge</p>
 
       <div class="gallery-grid">
-        <img class="gallery-item" src="images/IMG-20250825-WA0001.jpg" alt="portfolio 1">
-        <img class="gallery-item" src="images/IMG-20250825-WA0002.jpg" alt="portfolio 2">
-        <img class="gallery-item" src="images/IMG-20250825-WA0003.jpg" alt="portfolio 3">
-        <img class="gallery-item" src="images/IMG-20250825-WA0004.jpg" alt="portfolio 4">
-        <img class="gallery-item" src="images/IMG-20250825-WA0005.jpg" alt="portfolio 5">
-        <img class="gallery-item" src="images/IMG-20250825-WA0007.jpg" alt="portfolio 6">
-        <img class="gallery-item" src="images/IMG-20250825-WA0008.jpg" alt="portfolio 7">
-        <img class="gallery-item" src="images/IMG-20250825-WA0009.jpg" alt="portfolio 8">
-        <img class="gallery-item" src="images/IMG-20250825-WA0010.jpg" alt="portfolio 9">
-        <img class="gallery-item" src="images/IMG-20250825-WA0044.jpg" alt="portfolio 10">
-        <img class="gallery-item" src="images/IMG-20250825-WA0043.jpg" alt="portfolio 11">
-        <img class="gallery-item" src="images/IMG-20250825-WA0028.jpg" alt="portfolio 12">
-        <img class="gallery-item" src="images/IMG-20250825-WA0014.jpg" alt="portfolio 13">
-        <img class="gallery-item" src="images/IMG-20250825-WA0054.jpg" alt="portfolio 14">
-        <img class="gallery-item" src="images/IMG-20250825-WA0052.jpg" alt="portfolio 15">
-        <img class="gallery-item" src="images/IMG-20250825-WA0034.jpg" alt="portfolio 16">
-        <img class="gallery-item" src="images/IMG-20250825-WA0018.jpg" alt="portfolio 17">
-        <img class="gallery-item" src="images/IMG-20250825-WA0019.jpg" alt="portfolio 18">
-        <img class="gallery-item" src="images/IMG-20250825-WA0020.jpg" alt="portfolio 19">
-        <img class="gallery-item" src="images/IMG-20250825-WA0021.jpg" alt="portfolio 20">
-        <img class="gallery-item" src="images/IMG-20250825-WA0022.jpg" alt="portfolio 21">
-        <img class="gallery-item" src="images/IMG-20250825-WA0023.jpg" alt="portfolio 22">
-        <img class="gallery-item" src="images/IMG-20250825-WA0024.jpg" alt="portfolio 23">
-        <img class="gallery-item" src="images/IMG-20250825-WA0025.jpg" alt="portfolio 24">
-        <img class="gallery-item" src="images/IMG-20250825-WA0026.jpg" alt="portfolio 25">
-        <img class="gallery-item" src="images/IMG-20250825-WA0027.jpg" alt="portfolio 26">
+        <img class="gallery-item" src="images/before1.jpg" alt="portfolio 1">
+        <img class="gallery-item" src="images/before2.jpg" alt="portfolio 2">
+        <img class="gallery-item" src="images/before3.jpg" alt="portfolio 3">
+        <img class="gallery-item" src="images/IMG-20250825-WA0001.jpg" alt="portfolio 4">
+        <img class="gallery-item" src="images/IMG-20250825-WA0002.jpg" alt="portfolio 5">
+        <img class="gallery-item" src="images/IMG-20250825-WA0003.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0004.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/after1.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/after2.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/after3.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0005.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0006.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0008.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0009.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0010.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0011.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0012.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0014.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0015.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0018.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0019.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0020.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0021.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0022.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0023.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0024.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0025.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0026.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0027.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0028.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0029.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0030.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0031.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0032.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0033.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0035.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0036.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0039.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0040.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0041.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0042.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0043.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0044.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0045.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0046.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0047.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0048.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0049.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0050.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0051.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0052.jpg" alt="portfolio 6">
+        <img class="gallery-item" src="images/IMG-20250825-WA0054.jpg" alt="portfolio 6">
       </div>
 
-      <div class="center" style="margin-top:18px;">
+      <div style="margin-top:18px;">
         <a class="btn outline" href="index.html">Back to Home</a>
       </div>
     </section>
   </main>
 
-  <!-- Lightbox container (hidden until used) -->
+  <!-- Lightbox -->
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <button id="lb-close" class="lb-close" aria-label="close">×</button>
     <button id="lb-prev" class="lb-nav lb-prev" aria-label="previous">‹</button>
@@ -184,9 +339,9 @@ h1 {
     <button id="lb-next" class="lb-nav lb-next" aria-label="next">›</button>
   </div>
 
- <footer class="site-footer">
-  <div class="footer-inner narrow">
-    <div class="footer-center">
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner narrow">
       <div class="brand-row">
         <img src="images/logo.jpg" alt="Kathorus logo" class="logo">
         <div class="brand">
@@ -194,16 +349,66 @@ h1 {
           <div class="brand-sub">Premium Auto Care</div>
         </div>
       </div>
-
       <p>© 2025 Kathorus Premium Auto Care</p>
-
       <ul class="footer-links">
         <li><a href="#services">Services</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
-  </div>
-</footer>
+  </footer>
+
+  <!-- Lightbox Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const galleryItems = document.querySelectorAll(".gallery-item");
+      const lightbox = document.getElementById("lightbox");
+      const lbImage = document.getElementById("lb-image");
+      const lbClose = document.getElementById("lb-close");
+      const lbPrev = document.getElementById("lb-prev");
+      const lbNext = document.getElementById("lb-next");
+
+      let currentIndex = 0;
+
+      function showLightbox(index) {
+        currentIndex = index;
+        lbImage.src = galleryItems[index].src;
+        lightbox.classList.add("active");
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("active");
+      }
+
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        lbImage.src = galleryItems[currentIndex].src;
+      }
+
+      function showNext() {
+        currentIndex = (currentIndex + 1) % galleryItems.length;
+        lbImage.src = galleryItems[currentIndex].src;
+      }
+
+      galleryItems.forEach((item, index) => {
+        item.addEventListener("click", () => showLightbox(index));
+      });
+
+      lbClose.addEventListener("click", closeLightbox);
+      lbPrev.addEventListener("click", showPrev);
+      lbNext.addEventListener("click", showNext);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") showPrev();
+        if (e.key === "ArrowRight") showNext();
+      });
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+    });
+  </script>
+
 </body>
 </html>
