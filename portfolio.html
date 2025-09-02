@@ -10,7 +10,7 @@
 <body>
   <header class="site-header">
     <div class="header-left">
-      <img src="images/workshop.jpg" alt="logo" class="logo">
+      <img src="images/logo.jpg" alt="logo" class="logo">
       <div class="brand">
         <div class="brand-name">KATHORUS</div>
         <div class="brand-sub">Premium Auto Care</div>
@@ -25,6 +25,116 @@
       <a class="btn primary" href="index.html#contact">Get Quote</a>
     </div>
   </header>
+
+    <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="eyebrow">Our Work</div>
+      <h1>Portfolio</h1>
+      <p class="lead">Browse our collection of professional panel beating and repair work</p>
+    </div>
+  </section>
+
+  <style>
+  .hero {
+  position: relative;
+  min-height: 40vh; /* reduced from 78vh to 40vh */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px; /* reduced padding */
+  background: linear-gradient(180deg, #000000 0%, #0b1a3d 100%);
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(11, 26, 61, 0.15) 50%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+  z-index: 1;
+  animation: overlayShift 15s infinite linear;
+  background-size: 200% 200%;
+}
+
+@keyframes overlayShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  text-align: center;
+  padding: 16px; /* reduced padding */
+  max-width: 980px;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 4px 10px; /* smaller */
+  border-radius: 20px;
+  background: rgba(243, 3, 3, 0.772);
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 2rem; /* slightly smaller */
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.lead {
+  font-size: 0.95rem; /* smaller text */
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 12px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  .lead {
+    font-size: 0.9rem;
+  }
+  .hero-inner {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .lead {
+    font-size: 0.85rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+</style>
 
   <main>
     <section class="section narrow">
@@ -78,7 +188,7 @@
   <div class="footer-inner narrow">
     <div class="footer-center">
       <div class="brand-row">
-        <img src="images/workshop.jpg" alt="Kathorus logo" class="logo">
+        <img src="images/logo.jpg" alt="Kathorus logo" class="logo">
         <div class="brand">
           <div class="brand-name">KATHORUS</div>
           <div class="brand-sub">Premium Auto Care</div>

@@ -77,28 +77,48 @@ const $$ = sel => Array.from(document.querySelectorAll(sel));
 
 /* Reviews carousel: autoplay + manual + swipe */
 const reviews = document.querySelectorAll('.review');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
+const indicatorsContainer = document.querySelector('.indicators');
 let current = 0;
+let slideInterval;
+
+// Create dots dynamically
+reviews.forEach((_, i) => {
+  const dot = document.createElement('span');
+  dot.classList.add('dot');
+  if (i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => {
+    clearInterval(slideInterval); // stop auto-slide when clicked
+    showReview(i);
+    startAutoSlide(); // restart auto-slide
+  });
+  indicatorsContainer.appendChild(dot);
+});
+const dots = document.querySelectorAll('.dot');
 
 function showReview(index) {
   reviews.forEach((rev, i) => {
     rev.classList.remove('active');
-    if(i === index) rev.classList.add('active');
+    if (i === index) rev.classList.add('active');
   });
+
+  dots.forEach((dot, i) => {
+    dot.classList.remove('active');
+    if (i === index) dot.classList.add('active');
+  });
+
+  current = index;
 }
 
+function startAutoSlide() {
+  slideInterval = setInterval(() => {
+    current = (current === reviews.length - 1) ? 0 : current + 1;
+    showReview(current);
+  }, 5000);
+}
+
+// Show first review and start slideshow
 showReview(current);
-
-prevBtn.addEventListener('click', () => {
-  current = (current === 0) ? reviews.length - 1 : current - 1;
-  showReview(current);
-});
-
-nextBtn.addEventListener('click', () => {
-  current = (current === reviews.length - 1) ? 0 : current + 1;
-  showReview(current);
-});
+startAutoSlide();
 
 
 /* Portfolio lightbox (gallery page). Also supports gallery items on index if any) */
