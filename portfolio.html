@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfolio — Kathorus</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     body {
@@ -242,6 +244,21 @@
   background: red;
   color: #fff;
 }
+
+.social-links {
+  margin-top: 12px;
+}
+
+.social-links a {
+  color: #fff;
+  margin: 0 8px;
+  font-size: 1.4rem;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: red; /* brand hover color */
+}
   </style>
 </head>
 <body>
@@ -351,8 +368,9 @@
   </div>
 
   <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-inner narrow">
+<footer class="site-footer">
+  <div class="footer-inner narrow">
+    <div class="footer-center">
       <div class="brand-row">
         <img src="images/logo.jpg" alt="Kathorus logo" class="logo">
         <div class="brand">
@@ -360,14 +378,26 @@
           <div class="brand-sub">Premium Auto Care</div>
         </div>
       </div>
+
       <p>© 2025 Kathorus Premium Auto Care</p>
+
       <ul class="footer-links">
         <li><a href="#services">Services</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="#contact">Contact</a></li>
-      </ul>
+        </ul>
+     <footer class="site-footer">
+    
+
+  <div class="social-links">
+    <a href="https://www.facebook.com/profile.php?id=100092834807638" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://whatsapp.com/yourprofile" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+</footer>
+      
     </div>
-  </footer>
+  </div>
+</footer>
 
   <!-- Lightbox Script -->
   <script>
